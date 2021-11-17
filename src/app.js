@@ -1,7 +1,9 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
+
 import TaskRoutes from "./routes/task.routes";
+import { welcomeMessage } from "./config/welcome";
 
 //Initializations
 const app = express();
@@ -18,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //Routes
 app.get("/", (request, response) => {
-  response.json({ message: "Welcome to Task API!" });
+  response.json(welcomeMessage);
 });
 
 app.use("/api/tasks", TaskRoutes);
